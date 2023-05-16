@@ -1,0 +1,615 @@
+------------------------------------------------------------------------------------------------------------------------------------------------                                                   
+							Assignment - 25 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                  Classes and Objects
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Define a class Complex to represent a complex number. Declare instance member
+variables to store real and imaginary part of a complex number, also define instance
+member functions to set values of complex number and print values of complex
+number
+--------------------------------------------------------------------------------------------------------------------------------------------------
+// C++ program to Add two complex numbers
+#include <iostream>
+using namespace std;
+
+class Complex {
+public:
+    int real; // To store real part of complex number
+    int imaginary; // To store imaginary part of complex number
+
+    Complex()
+    {
+    // Initial values are zero
+        real = 0;
+        imaginary = 0;
+    }
+    Complex(int r, int i)
+    {
+        real = r; // r is initialized during object creation
+        imaginary = i; // i is initialized during object creation
+    }
+
+    Complex addComplexNumber(Complex C1, Complex C2)
+    {
+
+        Complex res; // result object of complex class
+
+        // adding real part of complex numbers
+        res.real = C1.real + C2.real;
+
+        // adding Imaginary part of complex numbers
+        res.imaginary = C1.imaginary + C2.imaginary;
+
+        // returning the sum
+        return res;
+    }
+};
+
+// Main Class
+int main()
+{
+
+    // First Complex number
+    Complex C1(4, 5);
+
+    // printing first complex number
+    cout << "Complex number 1 : " << C1.real
+         << " + i" << C1.imaginary << endl;
+
+    // Second Complex number
+    Complex C2(8, 9);
+
+    // printing second complex number
+    cout << "Complex number 2 : " << C2.real
+         << " + i" << C2.imaginary << endl;
+
+    // for Storing the sum
+    Complex C3;
+
+    // calling addComplexNumber() method
+    C3 = C3.addComplexNumber(C1, C2);
+
+    // printing the sum
+    cout << "Sum of complex number : "
+         << C3.real << " + i"
+         << C3.imaginary;
+
+    cout << endl
+         << endl;
+    // Test for second input
+    // First Complex number
+    Complex A(2, 7);
+
+    // printing first complex number
+    cout << "Complex number 1 : " << A.real
+         << " + i" << A.imaginary << endl;
+
+    // Second Complex number
+    Complex B(10, 6);
+
+    // printing second complex number
+    cout << "Complex number 2 : " << B.real
+         << " + i" << B.imaginary << endl;
+
+    // for Storing the sum
+    Complex C;
+
+    // calling addComplexNumber() method
+    C = C.addComplexNumber(A, B);
+
+    // printing the sum
+    cout << "Sum of complex number : "
+         << C.real << " + i"
+         << C.imaginary;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Define a class Time to represent Time (like 3 hr 45 min 20 sec). Declare appropriate
+number of instance member variables and also define instance member functions to
+set values for time and display values of time.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/ C++ program to create class to read and add two times
+
+#include <iostream>
+using namespace std;
+
+class Time {
+private:
+    int hours;
+    int minutes;
+    int seconds;
+
+public:
+    void getTime(void);
+    void putTime(void);
+    void addTime(Time T1, Time T2);
+};
+
+void Time::getTime(void)
+{
+    cout << "Enter time:" << endl;
+    cout << "Hours? ";
+    cin >> hours;
+    cout << "Minutes? ";
+    cin >> minutes;
+    cout << "Seconds? ";
+    cin >> seconds;
+}
+
+void Time::putTime(void)
+{
+    cout << endl;
+    cout << "Time after add: ";
+    cout << hours << ":" << minutes << ":" << seconds << endl;
+}
+
+void Time::addTime(Time T1, Time T2)
+{
+
+    this->seconds = T1.seconds + T2.seconds;
+    this->minutes = T1.minutes + T2.minutes + this->seconds / 60;
+    ;
+    this->hours = T1.hours + T2.hours + (this->minutes / 60);
+    this->minutes %= 60;
+    this->seconds %= 60;
+}
+
+int main()
+{
+    Time T1, T2, T3;
+    T1.getTime();
+    T2.getTime();
+    //add two times
+    T3.addTime(T1, T2);
+    T3.putTime();
+ return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Define a class Factorial and define an instance member function to find the Factorial
+of a number using class.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class Factorial
+{
+private:
+    int num;
+    int factorial = 1;
+
+public:
+    void calculateFactorial();
+    void show();
+};
+
+void
+Factorial::calculateFactorial()
+{
+    cout << "Enter a number : " << endl;
+    cin >> num;
+
+    if (num == 0 || num == 1)
+    {
+        factorial = 1;
+    }
+    else
+    {
+        while (num > 1)
+        {
+            factorial = factorial * num;
+            num--;
+        }
+    }
+}
+
+void Factorial::show()
+{
+    cout << "Factorial : " << factorial << endl;
+}
+
+int main()
+{
+    Factorial factorial;
+    factorial.calculateFactorial();
+    factorial.show();
+return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Define a class LargestNumber and define an instance member function to find the
+Largest of three Numbers using the class.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*  C++ Program to find Largest of three Numbers using class */
+
+#include<iostream>
+using namespace std;
+
+class largest
+{
+        private:
+                int x,y,z;
+    public:
+        void input()
+        {
+                cout<<"\nEnter 1st number :: ";
+                cin>>x;
+                cout<<"\nEnter 2nd number :: ";
+                cin>>y;
+                cout<<"\nEnter 3rd number :: ";
+                cin>>z;
+        }
+
+        void calc()
+        {
+                int r;
+                r=((x>y)&&(x>z)?x:(y>x)&&(y>z)?y:z);
+
+                cout<<"\nThe Largest Number among [ "<<x<<", "<<y<<", "<<z<<" ] = "<<r<<"\n";
+        }
+};
+
+int main()
+{
+        largest g;
+        g.input();
+        g.calc();
+
+        return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Define a class ReverseNumber and define an instance member function to find
+Reverse of a Number using class.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+
+// Create a class
+class Reverse {
+  // Private data member
+ private:
+  int number;
+
+  // Public function with an int type parameter
+ public:
+  void reverse(int n) {
+    // Copying value of parameter in the data member
+    number = n;
+
+    // Declaring two int type variable for storing reversed
+    // number and operations
+    int remain, reverse = 0;
+
+    // While loop for reversing the number
+    while (number) {
+      // The last digit of number is stored in remain
+      // by % operator
+      remain = number % 10;
+
+      // The number which is in remain will be added in reverse
+      // with a multiply of 10 at each iteration
+      reverse = (reverse * 10) + remain;
+
+      // Number is divided by 10 to discard the last digit
+      number = number / 10;
+    }
+
+    // Printing the reversed number
+    cout << "Reverse of " << n << " is " << reverse << endl;
+  }
+};
+
+int main() {
+  // Create an object
+  Reverse R;
+
+  // int type variable to store number
+  int number;
+
+  cout << "Enter Number: ";
+  cin >> number;
+
+  // calling function using object
+  R.reverse(number);
+
+  return 0;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Define a class Square to find the square of a number and write a C++ program to
+Count number of times a function is called.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*  C++ program to Count number of times a function is called  */
+
+#include<iostream>
+using namespace std;
+class square
+{
+   private:
+        int n,r;
+        float n1,r1;
+        static int b;
+        public:
+                void input();
+          void calc();
+                void display();
+
+};
+int square::b=0;
+ void square::input()
+{
+        cout<<"Enter an integer:";
+        cin>>n;
+        cout<<"Enter a float no.:";
+        cin>>n1;
+        b++;
+
+}
+ void square::calc()
+{
+        r=n*n;
+        r1=n1*n1;
+        b++;
+}
+void square::display()
+{
+        cout<<"Square of integer:"<<r;
+        cout<<"\nSquare of float:"<<r1;
+        cout<<"\nFunction is called "<<b<<" times by the objects";
+}
+
+
+int main()
+{
+        square s;
+        s.input();
+        s.calc();
+        s.display();
+return 0;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Define a class Greatest and define instance member function to find Largest among
+3 numbers using classes.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+class greatest
+{
+        private:
+                int x,y,z;
+    public:
+        void input()
+        {
+                cout<<"Enter 3 nos.";
+                cin>>x>>y>>z;
+        }
+        void calc()
+        {
+                int r;
+                r=((x>y)&&(x>z)?x:(y>x)&&(y>z)?y:z);
+                cout<<"Greatest no:"<<r;
+        }
+};
+int main()
+{
+        greatest g;
+        g.input();
+        g.calc();
+        return 0;
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. Define a class Rectangle and define an instance member function to find the area of
+the rectangle.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+class Rectangle{
+    private:
+        int l, b;
+    public:
+        void input(int len, int bre){
+            l = len;
+            b = bre;
+        }
+        int area(){
+            return l * b;
+        }
+};
+int main(){
+    Rectangle r1, r2;
+    r1.input(10, 9);
+    r2.input(8, 6);
+    cout << "Area of r1: " << r1.area() << endl;
+    cout << "Area of r2: " << r2.area() << endl;
+    return 0;
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9. Define a class Circle and define an instance member function to find the area of the
+circle.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+
+class circle
+{
+        float radius, area;   //data members
+    public:
+        circle()
+        {
+                cout<<"\n Enter the value of Radius : ";
+                cin>>radius;
+        }
+        void calculate();   //member function
+        void display();     //member function
+};
+inline void circle :: calculate()  //accessing data members of a class circle
+{
+        area = 3.14 * radius * radius;
+}
+inline void circle :: display()
+{
+        cout<<"\n Area of Circle : "<<area;
+}
+int main()
+{
+        circle cr;   //object created
+        cr.calculate();   //calling function
+        cr.display();  //calling function
+        return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. Define a class Area and define instance member functions to find the area of the
+different shapes like square, rectangle , circle etc.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Home » C++ Programs
+
+C++ program to find the area of shapes using class
+Learn, how can we find the area of shapes using the class and object approach?
+Submitted by Shubh Pachori, on September 04, 2022
+Example:
+
+Enter Circle's Radius :22
+Area of Circle : 1521
+
+Enter Rectangle's Length :12
+Enter Rectangle's Breadth :21
+Area of Rectangle : 252
+
+Enter Square's Side :22
+Area of Square : 484
+C++ code to find the area of shapes using the class and object approach
+#include <iostream>
+using namespace std;
+
+// create a class
+class Shape {
+  // protected data member
+ protected:
+  float area;
+};
+
+// class Rectangle inheriting class Shape
+class Rectangle : public Shape {
+  // protected data members
+ protected:
+  float length, breadth;
+
+  // public member function
+ public:
+  // get() function to input attributes of the class
+  void get() {
+    cout << "\nEnter Rectangle's Length :";
+    cin >> length;
+
+    cout << "Enter Rectangle's Breadth :";
+    cin >> breadth;
+  }
+
+  // Area() function to calculate the area of the class
+  double Area() {
+    // calculating area
+    area = length * breadth;
+
+    // returning area
+    return area;
+  }
+};
+
+// class Circle inheriting class Shape
+class Circle : public Shape {
+  // protected data member
+ protected:
+  float radius;
+
+  // public member functions
+ public:
+  // get() function to input attributes of the class
+  void get() {
+    cout << "Enter Circle's Radius :";
+    cin >> radius;
+  }
+
+  // Area() function to calculate area of the class
+  double Area() {
+    // calculating area
+    area = (22 * (radius * radius)) / 7;
+
+    // returning area
+    return area;
+  }
+};
+
+// class Square inheriting
+class Square : public Shape {
+  // protected data member
+ protected:
+  float side;
+
+  // public member function
+ public:
+  // get() function to input
+  // attributes of class
+  void get() {
+    cout << "\nEnter Square's Side : ";
+    cin >> side;
+  }
+
+  // Area() function to calculate
+  // area of the class
+  double Area() {
+    // calculating area
+    area = side * side;
+
+    // returning area
+    return area;
+  }
+};
+
+int main() {
+  // create an object of Circle class
+  Circle C;
+
+  // float type variable to store area
+  float circle;
+
+  // calling get() function to
+  // input radius of circle
+  C.get();
+
+  // calling Area() function to
+  // calculate area of circle
+  circle = C.Area();
+
+  cout << "Area of Circle : " << circle << endl;
+
+  // create an object of Rectangle class
+  Rectangle R;
+
+  // float type variable to store area
+  float rectangle;
+
+  // calling get() function to input length
+  // and breadth of rectangle
+  R.get();
+
+  // calling Area() function to calculate area of rectangle
+  rectangle = R.Area();
+
+  cout << "Area of Rectangle : " << rectangle << endl;
+
+  // create an object of Square class
+  Square S;
+
+  // float type variable to store area
+  float square;
+
+  // calling get() function to
+  // input side of square
+  S.get();
+
+  // calling Area() function to
+  // calculate area of square
+  square = S.Area();
+
+  cout << "Area of Square : " << square << endl;
+
+  return 0;
+}
